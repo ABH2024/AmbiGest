@@ -1,2 +1,2 @@
 # AmbiGest
-project page for ambi gest
+Project page for AmbiGest
