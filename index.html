@@ -2,29 +2,376 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="description" content="AmbiGest: A Dataset of Social Gestures with Inter-Class Similarity and Intra-Class Variability">
+  <meta name="keywords" content="AmbiGest, social gestures, human-human interaction, gesture recognition, SMPL-X, PromptHMR, SMPLest-X">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AmbiGest</title>
+
+  <link rel="stylesheet" href="./css/bulma.min.css">
+  <link rel="stylesheet" href="./css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+
+  <script defer src="./js/fontawesome.all.min.js"></script>
 </head>
-<body style="font-family: Arial, sans-serif; max-width: 900px; margin: 60px auto; line-height: 1.6; padding: 0 20px;">
-  <h1>AmbiGest: A Dataset of Social Gestures with Inter-Class Similarity and Intra-Class Variability</h1>
-  <p><strong>Accepted to the LFA Workshop at FG 2026</strong></p>
-  <p>
-    Hajra Anwar Beg, Mohamed Daoudi, Angela Bartolo
-  </p>
-  <p>
-    <span>Paper (Coming soon)</span> |
-    <span>Dataset (Coming soon)</span> |
-    <span>Code (Coming soon)</span>
-  </p>
-  <hr>
-  <p>
-    AmbiGest is a dataset of 117 dyadic social gesture sequences organized into four communicative categories &mdash; <em>greetings</em>, <em>calling</em>, <em>refusal</em>, and <em>thanks</em> &mdash; recorded with three actor pairs. It is specifically designed to combine <em>intra-class variability</em> (the same intent performed in different styles) and <em>inter-class similarity</em> (different intents sharing visually similar motion patterns).
-  </p>
-  <p>
-    To preserve participant anonymity, raw videos are not released. We instead provide 3D SMPL-X representations extracted with two complementary methods, PromptHMR and SMPLest-X, together with hierarchical annotations (class, subclass, semantic group, and natural language description).
-  </p>
-  <p>
-    Project page coming soon. More details, videos, dataset download, and baseline code will be added.
-  </p>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+
+      <h1 class="title is-1 publication-title">
+        AmbiGest: A Dataset of Social Gestures with Inter-Class Similarity and Intra-Class Variability
+      </h1>
+
+      <h2 class="subtitle is-4">
+        Accepted to the LFA Workshop at FG 2026
+      </h2>
+
+      <div class="is-size-5 publication-authors">
+        <span>Hajra Anwar Beg</span>,
+        <span>Mohamed Daoudi</span>,
+        <span>Angela Bartolo</span>
+      </div>
+
+      <div class="is-size-6 publication-authors" style="margin-top: 10px;">
+        <span>Univ. Lille / IMT Nord Europe</span> &nbsp; | &nbsp;
+        <span>SCALab, Univ. Lille, CNRS</span>
+      </div>
+
+      <div class="column has-text-centered">
+        <div class="publication-links">
+
+          <span class="link-block">
+            <a href="https://hal.science/hal-05609749v1/file/FG2026__workshopAmbiGest.pdf"
+               class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <i class="fas fa-file-pdf"></i>
+              </span>
+              <span>Paper</span>
+            </a>
+          </span>
+
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-light"
+               style="pointer-events: none; cursor: default;">
+              <span class="icon">
+                <i class="far fa-folder-open"></i>
+              </span>
+              <span>Dataset Coming Soon</span>
+            </a>
+          </span>
+
+          <span class="link-block">
+            <a class="external-link button is-normal is-rounded is-light"
+               style="pointer-events: none; cursor: default;">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code Coming Soon</span>
+            </a>
+          </span>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Abstract</h2>
+
+    <div class="content">
+      <p>
+        We propose <strong>AmbiGest</strong>, a dataset of dyadic social gestures designed for action recognition,
+        interaction understanding, and reaction generation. AmbiGest contains <strong>117 short clips</strong>
+        organized into four communicative categories: <strong>greetings</strong>, <strong>calling</strong>,
+        <strong>refusal</strong>, and <strong>thanks</strong>.
+      </p>
+
+      <p>
+        The dataset is designed around two central challenges: <strong>intra-class variability</strong>, where
+        the same communicative intent can be performed in different styles, and <strong>inter-class similarity</strong>,
+        where different intents may share visually similar motion patterns.
+      </p>
+
+      <p>
+        To preserve participant anonymity, raw RGB videos are not released. Instead, AmbiGest provides
+        extracted <strong>3D SMPL-X representations</strong> together with hierarchical annotations.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Dataset Overview</h2>
+
+    <div class="content">
+      <p>
+        AmbiGest focuses on subtle everyday social gestures rather than large-scale action categories.
+        It is designed to evaluate whether models can reason about communicative intent when different
+        gestures look similar or when the same intention is expressed in different ways.
+      </p>
+
+      <ul>
+        <li><strong>117</strong> dyadic gesture sequences.</li>
+        <li><strong>4</strong> communicative categories: greetings, calling, refusal, and thanks.</li>
+        <li><strong>3</strong> actor pairs for studying interpersonal variability.</li>
+        <li>Hierarchical annotations: class, subclass, semantic group, actor-pair ID, take index, and natural language description.</li>
+      </ul>
+    </div>
+
+    <div class="has-text-centered">
+      <img src="./images/OverviewAmbiGest.png"
+           alt="Overview of the AmbiGest dataset"
+           style="max-width: 100%; border-radius: 10px;">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Key Design</h2>
+
+    <div class="content">
+      <p>
+        AmbiGest deliberately combines two properties that make social gesture understanding challenging:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Intra-class variability:</strong> the same intent can be performed in different styles,
+          amplitudes, and timings across actor pairs.
+        </li>
+        <li>
+          <strong>Inter-class similarity:</strong> different intents can share similar motion patterns,
+          such as a wave used for greeting and a wave used to call someone.
+        </li>
+      </ul>
+
+      <p>
+        This design encourages models to move beyond coarse motion cues and to reason about social meaning.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Video Examples</h2>
+
+    <div class="content">
+      <p>
+        The examples below illustrate the two main challenges targeted by AmbiGest:
+        <strong>intra-class variability</strong>, where the same intention appears in different styles,
+        and <strong>inter-class similarity</strong>, where different intentions may look visually close.
+      </p>
+    </div>
+
+    <h3 class="title is-4">Intra-class Variability: Calling</h3>
+    <p>
+      The same communicative intent, calling someone, can be expressed with different gesture styles.
+    </p>
+
+    <div class="columns is-multiline is-vcentered">
+      <div class="column is-one-third has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/calling_hand_beckon_c1_001.mp4" type="video/mp4">
+        </video>
+        <p><strong>Calling</strong><br>Hand beckon</p>
+      </div>
+
+      <div class="column is-one-third has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/calling_finger_beckon_c2_001.mp4" type="video/mp4">
+        </video>
+        <p><strong>Calling</strong><br>Finger beckon</p>
+      </div>
+
+      <div class="column is-one-third has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/calling_call_with_hands_around_mouth_c1_001.mp4" type="video/mp4">
+        </video>
+        <p><strong>Calling</strong><br>Hands around mouth</p>
+      </div>
+    </div>
+
+    <h3 class="title is-4">Intra-class Variability: Greetings</h3>
+    <p>
+      Greetings can appear in different social forms, from formal handshakes to casual or enthusiastic gestures.
+    </p>
+
+    <div class="columns is-multiline is-vcentered">
+      <div class="column is-one-third has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/greetings_formal_handshake_c3_002.mp4" type="video/mp4">
+        </video>
+        <p><strong>Greetings</strong><br>Formal handshake</p>
+      </div>
+
+      <div class="column is-one-third has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/greetings_enthusiastic_handshake_c3_001.mp4" type="video/mp4">
+        </video>
+        <p><strong>Greetings</strong><br>Enthusiastic handshake</p>
+      </div>
+
+      <div class="column is-one-third has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/greetings_elbow_bump_c1_001.mp4" type="video/mp4">
+        </video>
+        <p><strong>Greetings</strong><br>Elbow bump</p>
+      </div>
+    </div>
+
+    <h3 class="title is-4">Inter-class Similarity: Wave-like Gestures</h3>
+    <p>
+      Different communicative intents can share similar motion patterns. A wave, for example, can be used
+      to greet someone or to call someone.
+    </p>
+
+    <div class="columns is-multiline is-vcentered">
+      <div class="column is-half has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/greetings_one_hand_wave_c1_001.mp4" type="video/mp4">
+        </video>
+        <p><strong>Greetings</strong><br>One-hand wave</p>
+      </div>
+
+      <div class="column is-half has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/calling_wave_to_call_c2_001.mp4" type="video/mp4">
+        </video>
+        <p><strong>Calling</strong><br>Wave to call</p>
+      </div>
+    </div>
+
+    <h3 class="title is-4">Inter-class Similarity: Ambiguous Hand and Arm Gestures</h3>
+    <p>
+      Different communicative intents can rely on visually similar hand or arm movements.
+      These examples show gestures that all involve salient upper-body motion, but correspond
+      to different social meanings: calling, greeting, and refusal.
+    </p>
+
+    <div class="columns is-multiline is-vcentered">
+      <div class="column is-one-third has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/calling_raise_hand_then_beckon_c1_001.mp4" type="video/mp4">
+        </video>
+        <p><strong>Calling</strong><br>Raise hand then beckon</p>
+      </div>
+
+      <div class="column is-one-third has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/greetings_one_hand_wave_c1_001.mp4" type="video/mp4">
+        </video>
+        <p><strong>Greetings</strong><br>One-hand wave</p>
+      </div>
+
+      <div class="column is-one-third has-text-centered">
+        <video controls muted loop playsinline width="100%">
+          <source src="./videos/refusal_head_shake_with_one_finger_c3_001.mp4" type="video/mp4">
+        </video>
+        <p><strong>Refusal</strong><br>Head shake with one finger</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Motion Representations</h2>
+
+    <div class="content">
+      <p>
+        AmbiGest provides two complementary 3D reconstruction outputs:
+      </p>
+
+      <ul>
+        <li>
+          <strong>PromptHMR:</strong> preserves the global placement and relative spatial positioning of the two
+          subjects, making it useful for interaction-level spatial reasoning.
+        </li>
+        <li>
+          <strong>SMPLest-X:</strong> provides more expressive whole-body motion and finer hand articulation,
+          but with less reliable relative placement between the two subjects.
+        </li>
+      </ul>
+
+      <p>
+        Releasing both representations allows researchers to select the representation that best matches
+        their task or to compare performance across reconstruction pipelines.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Baseline Experiments</h2>
+
+    <div class="content">
+      <p>
+        We evaluate gesture recognition using a leave-one-couple-out protocol, where two actor pairs are used
+        for training and the remaining pair is used for testing. Two temporal models are compared: a TCN and
+        a Transformer encoder.
+      </p>
+
+      <p>
+        The results show that interaction context is important for resolving ambiguity. With PromptHMR features,
+        actor-only input is limited, while adding the reactor and translation improves performance, reaching
+        <strong>91.3%</strong> accuracy with the Transformer. With SMPLest-X features, the best Transformer
+        configuration reaches <strong>89.0%</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Citation</h2>
+
+    <pre><code>@inproceedings{beg2026ambigest,
+  title={AmbiGest: A Dataset of Social Gestures with Inter-Class Similarity and Intra-Class Variability},
+  author={Anwar Beg, Hajra and Daoudi, Mohamed and Bartolo, Angela},
+  booktitle={2026 International Conference on Automatic Face and Gesture Recognition (FG), LFA Workshop},
+  year={2026}
+}</code></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Acknowledgements</h2>
+
+    <div class="content">
+      <p>
+        This project is supported by the France 2030 program, the FR CNRS 2052
+        Sciences et Cultures du Visuel, and the ANR Investissements d’Avenir program
+        Equipex+ Continuum.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        Project page for <strong>AmbiGest</strong>.
+      </p>
+      <p>
+        Website template adapted from the
+        <a href="https://nerfies.github.io/">Nerfies project page</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
